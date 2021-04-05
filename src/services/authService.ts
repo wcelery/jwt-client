@@ -1,14 +1,14 @@
 export const CONNECTION = process.env.REACT_APP_CONNECTION_STRING;
 
-/* export interface ICredentials {
-    username: string,
-    email?: string,
-    password:string
-} */
+export interface ICredentials {
+  username: string;
+  email?: string;
+  password: string;
+}
 
 export const login = async (username: string, password: string) => {
   const user = { username, password };
-  const response = await fetch(`${CONNECTION}/api/auth/signin`, {
+  const request = await fetch(`${CONNECTION}/api/auth/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -16,7 +16,7 @@ export const login = async (username: string, password: string) => {
     body: JSON.stringify(user),
   });
 
-  const data = await response.json();
+  const data = await request.json();
 
   localStorage.setItem("user", JSON.stringify(data));
 
@@ -30,7 +30,7 @@ export const register = async (
 ) => {
   const user = { username, email, password };
 
-  const response = await fetch(`${CONNECTION}/api/auth/create`, {
+  const request = await fetch(`${CONNECTION}/api/auth/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -38,7 +38,7 @@ export const register = async (
     body: JSON.stringify(user),
   });
 
-  const data = await response.json();
+  const data = await request.json();
   return data;
 };
 
