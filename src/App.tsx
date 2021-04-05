@@ -1,33 +1,20 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home";
-import RegisterForm from "./components/RegisterForm";
-import UserProfile from "./components/UserProfile";
-import { useAuthState, UserProvider } from "./context/userContext";
-import { login, logout } from "./services/authService";
-import { getUser } from "./services/userService";
+import { UserProvider } from "./context/userContext";
+import Home from "./Home";
 
 function App() {
   return (
-    <UserProvider>
-      <div className="App">
-        <h1>test</h1>
+    <div className="App">
+      <h1>test</h1>
+      <UserProvider>
         <Router>
           <Switch>
-            <Route path="/" component={Home}></Route>
-            <Route path="/register" component={RegisterForm}></Route>
-            <Route path="/profile" component={UserProfile}></Route>
+            <Route path="/" component={Home} />
           </Switch>
         </Router>
-      </div>
-    </UserProvider>
+      </UserProvider>
+    </div>
   );
 }
 

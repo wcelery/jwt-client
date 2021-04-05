@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { CONNECTION } from "../services/authService";
+import { Link } from "react-router-dom";
+import { CONNECTION, login } from "../services/authService";
 import { ICredentials } from "../services/authService";
 
 export const UserContext = React.createContext<IState>({
@@ -46,7 +47,24 @@ export const UserProvider: React.FC = ({ children }) => {
     }
   };
 
-  return <UserContext.Provider value={state}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={state}>
+      {/* {state.status === "pending" ? (
+        "Loading..."
+      ) : state.status === "error" ? (
+        <div>
+          Oh no
+          <div>
+            <pre>{state.error}</pre>
+            <Link to="/">back home</Link>
+          </div>
+        </div>
+      ) : (
+        children
+      )} */}{" "}
+      {children}
+    </UserContext.Provider>
+  );
 };
 export function useAuthState() {
   //hook to access fields from consumers, instead of useContext()
