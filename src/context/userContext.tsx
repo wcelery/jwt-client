@@ -22,9 +22,9 @@ export const UserProvider: React.FC = ({ children }) => {
     user: null,
   });
 
-  useEffect(() => {
+  /* useEffect(() => {
     getUser();
-  }, []);
+  }, []); */
 
   const getUser = async () => {
     const user: { access_token: string } = JSON.parse(
@@ -61,8 +61,8 @@ export const UserProvider: React.FC = ({ children }) => {
         </div>
       ) : (
         children
-      )} */}{" "}
-      {children}
+      )} */}
+      {state.status === "pending" ? "Loading..." : children}
     </UserContext.Provider>
   );
 };

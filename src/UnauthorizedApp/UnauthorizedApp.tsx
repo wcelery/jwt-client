@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import { login } from "../services/authService";
 import { getUser } from "../services/userService";
 import RegisterForm from "./components/RegisterForm";

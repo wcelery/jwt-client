@@ -7,13 +7,14 @@ function App() {
   return (
     <div className="App">
       <h1>test</h1>
-      <UserProvider>
-        <Router>
+
+      <Router>
+        <UserProvider>
           <Switch>
             <Route path="/" component={Home} />
           </Switch>
-        </Router>
-      </UserProvider>
+        </UserProvider>
+      </Router>
     </div>
   );
 }

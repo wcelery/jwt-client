@@ -1,8 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useAuthState, UserContext } from "../../context/userContext";
 
 export default function UserProfile() {
-  const user = useAuthState();
-  console.log(user);
-  return <h1>this is profile</h1>;
+  const { isAuthenticated } = useAuthState();
+  const [state, setstate] = useState(false);
+  console.log(isAuthenticated);
+  return (
+    <div>
+      <button
+        onClick={() => {
+          setstate(!state);
+        }}
+      >
+        toggle
+      </button>
+      {state ? "tets" : "no"}
+    </div>
+  ); /* isAuthenticated ? <h1>user</h1> : <h1>no user</h1>; */
 }
